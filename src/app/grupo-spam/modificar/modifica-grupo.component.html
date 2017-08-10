@@ -1,0 +1,17 @@
+<h3>Enviar mensaje</h3>
+<mensaje-grupo-spam [grupoSpam]="grupoSpam"></mensaje-grupo-spam>
+<button class="btn btn-block" (click)="enviarMensajeGrupo()">Enviar</button>
+
+<h3 class="text-center">Ver Grupo</h3>
+<h3>id:{{grupoSpam.id}},{{grupoSpam.nombreGrupo}}</h3>
+<h4><strong>Usuarios</strong></h4>
+<ul *ngFor="let usuarioSpam of grupoSpam.usuarios">
+  <li>{{usuarioSpam.email}}, {{usuarioSpam.nombre}}</li>
+</ul>
+
+<hr/>
+
+<h3 class="text-center">Modifica Grupo</h3>
+<nuevo-grupo-spam [grupoSpam]="grupoSpam"></nuevo-grupo-spam>
+<button class="btn btn-block" (click)="updateGrupo()">Modifica Grupo</button>
+<button (click)="deleteGroup(grupoSpam.id)" class="btn-danger btn-block">Elimina Grupo</button>

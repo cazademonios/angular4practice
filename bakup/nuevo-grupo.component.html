@@ -1,0 +1,20 @@
+<h2 class="text-center">Grupo Spam</h2>
+<form [formGroup]="grupoForm" novalidate autocomplete="off">
+  <div class="form-group" [ngClass]="{'has-error': formulario.checkField('nombre')}">
+    <label for="nombre">Nombre</label>
+    <input [(ngModel)]="grupoSpam.nombreGrupo" formControlName="nombre" id="nombre" class="form-control"  >
+    <div *ngIf="formulario.checkField('nombre')" class="help-block with-errors">
+      nombre mal
+    </div>
+  </div>
+
+  <h3 class="text-center">Usuarios</h3>
+  <button class="btn btn-block" (click)="newUsuario()">new Usuario</button>
+
+  <div *ngFor="let usuario of grupoSpam.usuarios;let indice = index">
+    {{indice}}<usuario-spam [usuario]="usuario" [indice]="indice" [formGroup]="grupoForm"></usuario-spam>
+  </div>
+  <br/>
+  <button class="btn btn-block" (click)="crearGrupo()">Crear Grupo</button>
+</form>
+{{grupoSpam | json}}

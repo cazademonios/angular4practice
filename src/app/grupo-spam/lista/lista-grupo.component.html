@@ -1,0 +1,21 @@
+<h2>Lista grupo</h2>
+
+<mensaje-grupo-spam [gruposSpam]="gruposSpam"></mensaje-grupo-spam>
+
+<button (click)="enviaMensajeGrupos()" class="btn btn-block">Enviar</button>
+
+<div *ngFor="let grupoSpam of gruposSpam">
+  <h3>
+    <input [(ngModel)]="grupoSpam.check" type="checkbox">
+    <a routerLink="/modifica-grupo/{{grupoSpam.id}}">id:{{grupoSpam.id}},{{grupoSpam.nombreGrupo}}</a>
+    <button (click)="deleteGroup(grupoSpam.id)" class="btn-danger">X</button>
+  </h3>
+  <h4><strong>Usuarios</strong></h4>
+  <ul *ngFor="let usuarioSpam of grupoSpam.usuarios">
+    <li>{{usuarioSpam.email}}, {{usuarioSpam.nombre}}</li>
+  </ul>
+</div>
+
+<div *ngIf="gruposSpam.length == 0">
+  <p>No hay grupos para mostrar</p>
+</div>

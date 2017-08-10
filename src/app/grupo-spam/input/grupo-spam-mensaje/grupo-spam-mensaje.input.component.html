@@ -1,0 +1,7 @@
+<div [formGroup]="mensajeForm" class="form-group">
+  <label for="mensaje">Mensaje</label>
+  <textarea [(ngModel)]="mensaje" id="mensaje" formControlName="mensaje" class="form-control" [ngClass]="{'has-error': formulario.checkField('mensaje')}"></textarea>
+  <div *ngIf="formulario.checkField('mensaje')" class="help-block with-errors">
+    mensaje mal
+  </div>
+</div>

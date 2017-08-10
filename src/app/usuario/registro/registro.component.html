@@ -1,0 +1,42 @@
+<h2 class="text-center">Registro</h2>
+<form [formGroup]="registroForm" novalidate autocomplete="off">
+  <div class="form-group" [ngClass]="{'has-error': checkField('nombre')}">
+    <label for="nombre">Nombre</label>
+    <input [(ngModel)]="usuario.nombre" formControlName="nombre" id="nombre" class="form-control"  >
+    <div *ngIf="checkField('nombre')" class="help-block with-errors">
+      nombre mal
+    </div>
+  </div>
+
+  <div class="form-group" [ngClass]="{'has-error': checkField('password')}">
+    <label for="password">password</label>
+    <input type="password" [(ngModel)]="usuario.password" formControlName="password" id="password" class="form-control"  >
+    <div *ngIf="checkField('password')" class="help-block with-errors">
+      password mal
+    </div>
+  </div>
+
+  <div class="form-group" [ngClass]="{'has-error': checkField('email')}">
+    <label for="email">Email</label>
+    <input [(ngModel)]="usuario.email" formControlName="email" id="email" class="form-control">
+    <div *ngIf="checkField('email')" class="help-block with-errors">
+      email mal
+    </div>
+  </div>
+
+  <div class="form-group"
+       [ngClass]="{'has-error': checkField('rol')}">
+    <label for="rol">Rol</label>
+    <select [(ngModel)]="usuario.rol" class="form-control" id="rol" name="rol" formControlName="rol">
+      <option>Elige ...</option>
+      <option *ngFor="let rol of roles">{{rol}}</option>
+    </select>
+    <div *ngIf="checkField('rol')" class="help-block with-errors">
+      rol mal
+    </div>
+  </div>
+
+  <input (click)="insertaUsuario()" type="submit" value="Registrar" class="btn btn-block">
+  <button (click)="resetForm()" class="btn btn-block">Reset</button>
+
+</form>

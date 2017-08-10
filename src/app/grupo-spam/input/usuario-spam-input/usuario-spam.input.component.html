@@ -1,0 +1,17 @@
+<div [formGroup]="formGroup">
+  <div class="form-group" [ngClass]="{'has-error': formulario.checkField('email'+indice)}">
+    <label for="{{'email'+indice}}">Email</label>
+    <input [(ngModel)]="usuario.email" formControlName="{{'email'+indice}}" id="{{'email'+indice}}" class="form-control">
+    <div *ngIf="formulario.checkField('email'+indice)" class="help-block with-errors">
+      Email mal
+    </div>
+  </div>
+  <div class="form-group" [ngClass]="{'has-error': formulario.checkField('nombre'+indice)}">
+    <label for="{{'nombre'+indice}}">Nombre</label>
+    <input [(ngModel)]="usuario.nombre" formControlName="{{'nombre'+indice}}" id="{{'nombre'+indice}}" class="form-control"  >
+    <div *ngIf="formulario.checkField('nombre'+indice)" class="help-block with-errors">
+      nombre mal
+    </div>
+  </div>
+  <button (click)="validaUsuario()">Valida</button>
+</div>

@@ -1,0 +1,22 @@
+<h2>Login</h2>
+<form [formGroup]="loginForm" novalidate autocomplete="off">
+  <div class="form-group" [ngClass]="{'has-error': formulario.checkField('nombre')}">
+    <label for="nombre">Nombre</label>
+    <input [(ngModel)]="usuarioLogin.nombre" formControlName="nombre" id="nombre" class="form-control"  >
+    <div *ngIf="formulario.checkField('nombre')" class="help-block with-errors">
+      nombre mal
+    </div>
+  </div>
+
+  <div class="form-group" [ngClass]="{'has-error': formulario.checkField('password')}">
+    <label for="password">password</label>
+    <input type="password" [(ngModel)]="usuarioLogin.password" formControlName="password" id="password" class="form-control"  >
+    <div *ngIf="formulario.checkField('password')" class="help-block with-errors">
+      password mal
+    </div>
+  </div>
+  <div class="alert-danger" *ngIf="errorLogin">
+    Fallo al loguear: {{errorLogin | json}}
+  </div><br/>
+  <button (click)="toLogin()" class="btn btn-block">Login</button>
+</form>

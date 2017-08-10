@@ -1,3 +1,9 @@
-<h1>
-  {{title}}
-</h1>
+<nav>
+  <a routerLink="/login" routerLinkActive="active">-Login-</a>
+  <a routerLink="/registro" routerLinkActive="active">-Registro-</a>
+  <a routerLink="/grupo-spam" routerLinkActive="active">-GrupoSpam-</a>
+  <a routerLink="/nuevo-grupo" routerLinkActive="active">-NuevoGrupoSpam-</a>
+  <a routerLink="/lista-grupo" routerLinkActive="active">-ListaGrupoSpam-</a>
+  <a *ngIf="auth.checkLogin()" (click)="auth.logout()">-logOut-</a>
+</nav>
+<router-outlet></router-outlet>
